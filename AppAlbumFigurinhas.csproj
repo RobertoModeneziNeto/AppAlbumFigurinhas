@@ -67,10 +67,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Models\" />
-	  <Folder Include="Controllers\" />
-	  <Folder Include="Views\" />
-	  <Folder Include="Services\" />
+	  <MauiXaml Update="Views\pgCadFigurinhaView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\pgListaFigurinhasView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>

@@ -1,22 +1,23 @@
-﻿using AppAlbumFigurinhas.Views;
+﻿using Microsoft.Extensions.Logging;
 
 namespace AppAlbumFigurinhas
 {
-    public partial class MainPage : ContentPage
+    public static class MauiProgram
     {
-        public MainPage()
+        public static MauiApp CreateMauiApp()
         {
-            InitializeComponent();
-        }
-
-        private void btnCadastrar_Clicked(object sender, EventArgs e)
-        {
-            Application.Current.MainPage.Navigation.PushAsync(new pgCadFigurinhaView());
-        }
-
-        private void btnLista_Clicked(object sender, EventArgs e)
-        {
-            Application.Current.MainPage.Navigation.PushAsync(new pgListaFigurinhasView());
+            var builder = MauiApp.CreateBuilder();
+            builder
+                .UseMauiApp<App>()
+                .ConfigureFonts(fonts =>
+                {
+                    fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                    fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                });
+#if DEBUG
+            builder.Logging.AddDebug();
+#endif
+            return builder.Build();
         }
     }
 }

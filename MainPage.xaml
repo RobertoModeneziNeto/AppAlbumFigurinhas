@@ -71,7 +71,7 @@
                    TextColor="#A8D5B5"
                    FontSize="12"
                    HorizontalTextAlignment="Center"/>
-            <Label Text="Seu Nome | Nome do Colega"
+            <Label Text="Luiz Candil, Murilo Piai e Roberto Modenezi"
                    TextColor="#A8D5B5"
                    FontSize="12"
                    HorizontalTextAlignment="Center"/>

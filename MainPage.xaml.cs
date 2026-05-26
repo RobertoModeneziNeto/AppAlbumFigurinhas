@@ -1,24 +1,22 @@
-﻿namespace AppAlbumFigurinhas
+﻿using AppAlbumFigurinhas.Views;
+
+namespace AppAlbumFigurinhas
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
-
         public MainPage()
         {
             InitializeComponent();
         }
 
-        private void OnCounterClicked(object? sender, EventArgs e)
+        private void btnCadastrar_Clicked(object sender, EventArgs e)
         {
-            count++;
+            Application.Current.MainPage.Navigation.PushAsync(new pgCadFigurinhaView());
+        }
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+        private void btnLista_Clicked(object sender, EventArgs e)
+        {
+            Application.Current.MainPage.Navigation.PushAsync(new pgListaFigurinhasView());
         }
     }
 }
