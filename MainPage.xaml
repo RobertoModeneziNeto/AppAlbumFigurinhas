@@ -63,6 +63,21 @@
             </StackLayout>
         </ScrollView>
 
+        <!-- Botão Abrir Pacote (entre Cadastrar e Lista) -->
+        <Frame BackgroundColor="#C8102E"
+               CornerRadius="16"
+               Padding="0"
+               Margin="0,0,0,16"
+               HasShadow="True">
+            <Button Text="🎴  Abrir Pacote"
+                    FontSize="18"
+                    FontAttributes="Bold"
+                    TextColor="White"
+                    BackgroundColor="Transparent"
+                    Clicked="btnAbrirPacote_Clicked"
+                    HeightRequest="60"/>
+        </Frame>
+
         <!-- RODAPÉ -->
         <StackLayout Grid.Row="1"
                      BackgroundColor="#0A5530"

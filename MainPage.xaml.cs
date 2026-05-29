@@ -18,5 +18,11 @@ namespace AppAlbumFigurinhas
         {
             Application.Current.MainPage.Navigation.PushAsync(new pgListaFigurinhasView());
         }
+
+        private void btnAbrirPacote_Clicked(object sender, EventArgs e)
+        {
+            Application.Current.MainPage.Navigation.PushAsync(new pgAbrirPacoteView());
+
+        }
     }
 }

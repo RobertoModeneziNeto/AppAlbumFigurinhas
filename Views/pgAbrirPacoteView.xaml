@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppAlbumFigurinhas.Views.pgAbrirPacoteView"
+             Title="Abrir Pacote"
+             BackgroundColor="#0D6E3F">
+    <Grid RowDefinitions="Auto, *, Auto">
+
+        <!-- CABEÇALHO -->
+        <StackLayout Grid.Row="0" Padding="16,12">
+            <Label Text="🎴 Abrir Pacote"
+                   FontSize="22"
+                   FontAttributes="Bold"
+                   TextColor="#FFD700"
+                   HorizontalTextAlignment="Center"/>
+        </StackLayout>
+
+        <!-- ÁREA CENTRAL (pacote / figurinha) -->
+        <ScrollView Grid.Row="1">
+            <StackLayout x:Name="stkConteudo"
+                         VerticalOptions="Center"
+                         HorizontalOptions="Center"
+                         Padding="20"
+                         Spacing="16">
+
+                <!-- === ESTADO 1: Pacote fechado === -->
+                <StackLayout x:Name="stkPacoteFechado"
+                             IsVisible="True"
+                             HorizontalOptions="Center"
+                             Spacing="20">
+
+                    <Image x:Name="imgPacote"
+                           Source="pacote.png"
+                           HeightRequest="280"
+                           WidthRequest="200"
+                           HorizontalOptions="Center"
+                           Aspect="AspectFit"/>
+
+                    <Label Text="Toque em Abrir para revelar\nsua figurinha!"
+                           TextColor="#A8D5B5"
+                           FontSize="15"
+                           HorizontalTextAlignment="Center"/>
+
+                    <Button Text="🎁 Abrir"
+                            x:Name="btnAbrir"
+                            Clicked="btnAbrir_Clicked"
+                            BackgroundColor="#FFD700"
+                            TextColor="#0D6E3F"
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            CornerRadius="14"
+                            HeightRequest="60"
+                            WidthRequest="200"
+                            HorizontalOptions="Center"/>
+                </StackLayout>
+
+                <!-- === ESTADO 2: Animação de abertura === -->
+                <StackLayout x:Name="stkAnimacao"
+                             IsVisible="False"
+                             HorizontalOptions="Center"
+                             Spacing="20">
+
+                    <Image x:Name="imgPacoteAbrindo"
+                           Source="pacote.png"
+                           HeightRequest="280"
+                           WidthRequest="200"
+                           HorizontalOptions="Center"
+                           Aspect="AspectFit"/>
+
+                    <Label Text="Abrindo pacote..."
+                           TextColor="#FFD700"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center"/>
+                </StackLayout>
+
+                <!-- === ESTADO 3: Figurinha revelada === -->
+                <StackLayout x:Name="stkFigurinhaRevelada"
+                             IsVisible="False"
+                             HorizontalOptions="Center"
+                             Spacing="12">
+
+                    <!-- Card da figurinha -->
+                    <Frame x:Name="frmFigurinha"
+                           BackgroundColor="#0A5530"
+                           CornerRadius="16"
+                           Padding="16"
+                           HasShadow="True"
+                           WidthRequest="260">
+                        <StackLayout Spacing="8">
+
+                            <!-- Badge Novo / Repetida -->
+                            <Frame x:Name="frmBadge"
+                                   CornerRadius="8"
+                                   Padding="6,4"
+                                   HorizontalOptions="Center"
+                                   BackgroundColor="#FFD700">
+                                <Label x:Name="lblBadge"
+                                       Text="✨ FIGURINHA NOVA!"
+                                       TextColor="#0D6E3F"
+                                       FontAttributes="Bold"
+                                       FontSize="13"
+                                       HorizontalTextAlignment="Center"/>
+                            </Frame>
+
+                            <!-- Imagem da figurinha -->
+                            <Image x:Name="imgFigurinhaRevelada"
+                                   HeightRequest="200"
+                                   Aspect="AspectFit"
+                                   HorizontalOptions="Center"
+                                   BackgroundColor="#1A7A4A"/>
+
+                            <!-- Nome -->
+                            <Label x:Name="lblNomeFigurinha"
+                                   TextColor="White"
+                                   FontAttributes="Bold"
+                                   FontSize="18"
+                                   HorizontalTextAlignment="Center"/>
+
+                            <!-- Seleção -->
+                            <Label x:Name="lblSelecaoFigurinha"
+                                   TextColor="#A8D5B5"
+                                   FontSize="14"
+                                   HorizontalTextAlignment="Center"/>
+
+                            <!-- Tipo -->
+                            <Label x:Name="lblTipoFigurinha"
+                                   TextColor="#FFD700"
+                                   FontSize="13"
+                                   HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <!-- Botões de ação - aparecem conforme status -->
+
+                    <!-- Botão: Adicionar à lista (só para figurinha NOVA) -->
+                    <Button x:Name="btnAdicionarLista"
+                            Text="➕ Adicionar à lista"
+                            Clicked="btnAdicionarLista_Clicked"
+                            BackgroundColor="#1565C0"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            CornerRadius="12"
+                            HeightRequest="50"
+                            IsVisible="False"/>
+
+                    <!-- Botão: Marcar como Adquirida -->
+                    <Button x:Name="btnMarcarAdquirida"
+                            Text="✅ Marcar como adquirida"
+                            Clicked="btnMarcarAdquirida_Clicked"
+                            BackgroundColor="#1B5E20"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            CornerRadius="12"
+                            HeightRequest="50"
+                            IsVisible="False"/>
+
+                    <!-- Botão: Marcar como Desejada -->
+                    <Button x:Name="btnMarcarDesejada"
+                            Text="❤️ Marcar como desejada"
+                            Clicked="btnMarcarDesejada_Clicked"
+                            BackgroundColor="#B71C1C"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            CornerRadius="12"
+                            HeightRequest="50"
+                            IsVisible="False"/>
+
+                    <!-- Botão: Abrir outro pacote -->
+                    <Button Text="🎴 Abrir outro pacote"
+                            Clicked="btnAbrirOutro_Clicked"
+                            BackgroundColor="#FFD700"
+                            TextColor="#0D6E3F"
+                            FontAttributes="Bold"
+                            CornerRadius="12"
+                            HeightRequest="50"/>
+
+                    <!-- Botão: Sair -->
+                    <Button Text="← Voltar ao menu"
+                            Clicked="btnVoltar_Clicked"
+                            BackgroundColor="Transparent"
+                            TextColor="#A8D5B5"
+                            FontSize="14"
+                            Margin="0,0,0,20"/>
+
+                </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
+
+    </Grid>
+</ContentPage>
