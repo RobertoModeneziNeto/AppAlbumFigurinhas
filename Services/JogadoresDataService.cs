@@ -800,14 +800,19 @@ namespace AppAlbumFigurinhas.Services
         // Como não temos o código/número, usamos nome direto para localizar
         public static string BuscarCaminhoImagem(string nomeJogador, string selecao)
         {
-            // Tenta encontrar a imagem na pasta de imagens copiadas pelo app
             var pastaImagens = Path.Combine(AppContext.BaseDirectory, "Imagens");
             if (!Directory.Exists(pastaImagens)) return "";
 
-            // Busca arquivo cujo nome contenha o nome do jogador
+            // Normaliza o nome para comparação (remove acentos e lowercases)
+            string nomeBusca = nomeJogador.ToLower().Trim();
+
             var arquivos = Directory.GetFiles(pastaImagens)
-                .Where(f => Path.GetFileNameWithoutExtension(f)
-                    .Contains(nomeJogador, StringComparison.OrdinalIgnoreCase))
+                .Where(f =>
+                {
+                    string nomeArq = Path.GetFileNameWithoutExtension(f).ToLower();
+                    // Verifica se o arquivo contém o nome do jogador
+                    return nomeArq.Contains(nomeBusca);
+                })
                 .ToList();
 
             return arquivos.FirstOrDefault() ?? "";
