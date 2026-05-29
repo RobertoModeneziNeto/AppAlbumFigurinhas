@@ -105,16 +105,21 @@ public partial class pgAbrirPacoteView : ContentPage
         lblTipoFigurinha.Text = "Tipo: " + _sorteada.Tipo;
 
         // Carrega a imagem — tenta encontrar pelo nome do jogador
+        // Carrega a imagem pelo caminho real no disco
         string dirImagem = JogadoresDataService.BuscarCaminhoImagem(
             _sorteada.Nome, _sorteada.Selecao);
 
+        // Se não encontrou pela busca, tenta pegar do registro existente no banco
+        if (string.IsNullOrEmpty(dirImagem) && _figurinhaExistente != null
+            && !string.IsNullOrEmpty(_figurinhaExistente.DirImagem))
+        {
+            dirImagem = _figurinhaExistente.DirImagem;
+        }
+
         if (!string.IsNullOrEmpty(dirImagem))
-            imgFigurinhaRevelada.Source = dirImagem;
-        else if (_figurinhaExistente != null &&
-                 !string.IsNullOrEmpty(_figurinhaExistente.DirImagem))
-            imgFigurinhaRevelada.Source = _figurinhaExistente.DirImagem;
+            imgFigurinhaRevelada.Source = ImageSource.FromFile(dirImagem);
         else
-            imgFigurinhaRevelada.Source = ""; // sem imagem
+            imgFigurinhaRevelada.Source = null;
 
         // Configura botões conforme status
         if (ehNova)
@@ -158,6 +163,10 @@ public partial class pgAbrirPacoteView : ContentPage
     // =============================================
     private async void btnAdicionarLista_Clicked(object sender, EventArgs e)
     {
+        // Busca o caminho real da imagem no disco
+        string dirImagemReal = JogadoresDataService.BuscarCaminhoImagem(
+            _sorteada.Nome, _sorteada.Selecao);
+
         var nova = new Figurinha
         {
             NomeJogador = _sorteada.Nome,
@@ -165,7 +174,7 @@ public partial class pgAbrirPacoteView : ContentPage
             TipoFigurinha = _sorteada.Tipo,
             Obtido = false,
             Desejado = false,
-            DirImagem = imgFigurinhaRevelada.Source?.ToString() ?? ""
+            DirImagem = dirImagemReal  // caminho real do arquivo
         };
 
         if (_controller.Insert(nova))
@@ -174,7 +183,7 @@ public partial class pgAbrirPacoteView : ContentPage
             btnAdicionarLista.IsVisible = false;
             btnMarcarAdquirida.IsVisible = true;
             btnMarcarDesejada.IsVisible = true;
-            await DisplayAlert(" Adicionada!",
+            await DisplayAlert("Adicionada!",
                 $"{_sorteada.Nome} foi adicionada à sua lista.", "OK");
         }
         else
