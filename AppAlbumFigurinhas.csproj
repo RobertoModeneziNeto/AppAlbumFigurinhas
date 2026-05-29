@@ -67,6 +67,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Views\pgAbrirPacoteView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\pgCadFigurinhaView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
