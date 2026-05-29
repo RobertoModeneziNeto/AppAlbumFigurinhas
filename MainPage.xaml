@@ -6,7 +6,6 @@
 
     <Grid RowDefinitions="*, Auto">
 
-        <!-- CONTEÚDO PRINCIPAL -->
         <ScrollView Grid.Row="0">
             <StackLayout Padding="20" Spacing="0">
 
@@ -45,6 +44,21 @@
                             HeightRequest="60"/>
                 </Frame>
 
+                <!-- Botão Abrir Pacote -->
+                <Frame BackgroundColor="#C8102E"
+                       CornerRadius="16"
+                       Padding="0"
+                       Margin="0,0,0,16"
+                       HasShadow="True">
+                    <Button Text="🎴  Abrir Pacote"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            TextColor="White"
+                            BackgroundColor="Transparent"
+                            Clicked="btnAbrirPacote_Clicked"
+                            HeightRequest="60"/>
+                </Frame>
+
                 <!-- Botão Lista -->
                 <Frame BackgroundColor="White"
                        CornerRadius="16"
@@ -62,21 +76,6 @@
 
             </StackLayout>
         </ScrollView>
-
-        <!-- Botão Abrir Pacote (entre Cadastrar e Lista) -->
-        <Frame BackgroundColor="#C8102E"
-               CornerRadius="16"
-               Padding="0"
-               Margin="0,0,0,16"
-               HasShadow="True">
-            <Button Text="🎴  Abrir Pacote"
-                    FontSize="18"
-                    FontAttributes="Bold"
-                    TextColor="White"
-                    BackgroundColor="Transparent"
-                    Clicked="btnAbrirPacote_Clicked"
-                    HeightRequest="60"/>
-        </Frame>
 
         <!-- RODAPÉ -->
         <StackLayout Grid.Row="1"
