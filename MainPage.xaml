@@ -1,95 +1,102 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppAlbumFigurinhas.MainPage"
-             BackgroundColor="#0D6E3F">
+             x:Class="AppAlbumFigurinhas.MainPage">
 
-    <Grid RowDefinitions="*, Auto">
+    <Grid>
+        <!-- Camada 1: Imagem de fundo -->
+        <Image Source="backgroundinicio.png"
+               Aspect="AspectFill"
+               HorizontalOptions="Fill"
+               VerticalOptions="Fill"/>
 
-        <ScrollView Grid.Row="0">
-            <StackLayout Padding="20" Spacing="0">
+        <!-- Camada 2: Conteúdo -->
+        <Grid RowDefinitions="*, Auto">
 
-                <!-- Imagem temática -->
-                <Image Source="copa_banner.png"
-                       HeightRequest="180"
-                       Aspect="AspectFill"
-                       Margin="0,10,0,0"/>
+            <ScrollView Grid.Row="0">
+                <StackLayout Padding="20" Spacing="0">
 
-                <!-- Nome do App -->
-                <Label Text="🏆 Figurinhas Copa 2026"
-                       FontSize="26"
-                       FontAttributes="Bold"
-                       TextColor="White"
-                       HorizontalTextAlignment="Center"
-                       Margin="0,16,0,4"/>
+                    <Label Text="🏆 Figurinhas Copa 2026"
+                           FontSize="26"
+                           FontAttributes="Bold"
+                           TextColor="#FFD700"
+                           HorizontalTextAlignment="Center"
+                           Margin="0,40,0,4"/>
 
-                <Label Text="Gerencie sua coleção"
-                       FontSize="14"
-                       TextColor="#A8D5B5"
-                       HorizontalTextAlignment="Center"
-                       Margin="0,0,0,30"/>
+                    <Label Text="Gerencie sua coleção"
+                           FontSize="14"
+                           TextColor="White"
+                           HorizontalTextAlignment="Center"
+                           Margin="0,0,0,40"/>
 
-                <!-- Botão Cadastro -->
-                <Frame BackgroundColor="#FFD700"
-                       CornerRadius="16"
-                       Padding="0"
-                       Margin="0,0,0,16"
-                       HasShadow="True">
-                    <Button Text="➕  Cadastrar Figurinha"
-                            FontSize="18"
-                            FontAttributes="Bold"
-                            TextColor="#0D6E3F"
-                            BackgroundColor="Transparent"
-                            Clicked="btnCadastrar_Clicked"
-                            HeightRequest="60"/>
+                    <!-- Botão Cadastro -->
+                    <Frame BackgroundColor="#FFD700"
+                           CornerRadius="16"
+                           Padding="0"
+                           Margin="0,0,0,16"
+                           HasShadow="True">
+                        <Button Text="➕  Cadastrar Figurinha"
+                                FontSize="18"
+                                FontAttributes="Bold"
+                                TextColor="#0D1B2A"
+                                BackgroundColor="Transparent"
+                                Clicked="btnCadastrar_Clicked"
+                                HeightRequest="60"/>
+                    </Frame>
+
+                    <!-- Botão Abrir Pacote -->
+                    <Frame BackgroundColor="#C8102E"
+                           CornerRadius="16"
+                           Padding="0"
+                           Margin="0,0,0,16"
+                           HasShadow="True">
+                        <Button Text="🎴  Abrir Pacote"
+                                FontSize="18"
+                                FontAttributes="Bold"
+                                TextColor="White"
+                                BackgroundColor="Transparent"
+                                Clicked="btnAbrirPacote_Clicked"
+                                HeightRequest="60"/>
+                    </Frame>
+
+                    <!-- Botão Lista -->
+                    <Frame BackgroundColor="White"
+                           CornerRadius="16"
+                           Padding="0"
+                           Margin="0,0,0,16"
+                           HasShadow="True">
+                        <Button Text="📋  Lista de Figurinhas"
+                                FontSize="18"
+                                FontAttributes="Bold"
+                                TextColor="#0D1B2A"
+                                BackgroundColor="Transparent"
+                                Clicked="btnLista_Clicked"
+                                HeightRequest="60"/>
+                    </Frame>
+
+                </StackLayout>
+            </ScrollView>
+
+            <!-- Rodapé com fundo semitransparente -->
+            <StackLayout Grid.Row="1"
+                         Padding="10">
+                <Frame BackgroundColor="#80000000"
+                       CornerRadius="10"
+                       Padding="8"
+                       Margin="10,0,10,10">
+                    <StackLayout>
+                        <Label Text="v1.0.0"
+                               TextColor="#FFD700"
+                               FontSize="12"
+                               HorizontalTextAlignment="Center"/>
+                        <Label Text="Luiz Candil, Murilo Piai e Roberto Modenezi"
+                               TextColor="White"
+                               FontSize="12"
+                               HorizontalTextAlignment="Center"/>
+                    </StackLayout>
                 </Frame>
-
-                <!-- Botão Abrir Pacote -->
-                <Frame BackgroundColor="#C8102E"
-                       CornerRadius="16"
-                       Padding="0"
-                       Margin="0,0,0,16"
-                       HasShadow="True">
-                    <Button Text="🎴  Abrir Pacote"
-                            FontSize="18"
-                            FontAttributes="Bold"
-                            TextColor="White"
-                            BackgroundColor="Transparent"
-                            Clicked="btnAbrirPacote_Clicked"
-                            HeightRequest="60"/>
-                </Frame>
-
-                <!-- Botão Lista -->
-                <Frame BackgroundColor="White"
-                       CornerRadius="16"
-                       Padding="0"
-                       Margin="0,0,0,16"
-                       HasShadow="True">
-                    <Button Text="📋  Lista de Figurinhas"
-                            FontSize="18"
-                            FontAttributes="Bold"
-                            TextColor="#0D6E3F"
-                            BackgroundColor="Transparent"
-                            Clicked="btnLista_Clicked"
-                            HeightRequest="60"/>
-                </Frame>
-
             </StackLayout>
-        </ScrollView>
 
-        <!-- RODAPÉ -->
-        <StackLayout Grid.Row="1"
-                     BackgroundColor="#0A5530"
-                     Padding="10">
-            <Label Text="v1.0.0"
-                   TextColor="#A8D5B5"
-                   FontSize="12"
-                   HorizontalTextAlignment="Center"/>
-            <Label Text="Luiz Candil, Murilo Piai e Roberto Modenezi"
-                   TextColor="#A8D5B5"
-                   FontSize="12"
-                   HorizontalTextAlignment="Center"/>
-        </StackLayout>
-
+        </Grid>
     </Grid>
 </ContentPage>

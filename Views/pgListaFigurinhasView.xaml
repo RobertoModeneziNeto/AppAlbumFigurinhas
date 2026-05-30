@@ -2,128 +2,135 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppAlbumFigurinhas.Views.pgListaFigurinhasView"
-             Title="Lista de Figurinhas"
-             BackgroundColor="#0D6E3F">
-    <Grid RowDefinitions="Auto, *">
+             Title="Lista de Figurinhas">
+    <Grid>
+        <!-- Fundo -->
+        <Image Source="backgroundlistagem.png"
+               Aspect="AspectFill"
+               HorizontalOptions="Fill"
+               VerticalOptions="Fill"/>
 
-        <!-- FILTROS -->
-        <StackLayout Grid.Row="0"
-                     BackgroundColor="#0A5530"
-                     Padding="12" Spacing="8">
+        <!-- Conteúdo -->
+        <Grid RowDefinitions="Auto, *, Auto">
 
-            <Label Text="🔍 Filtros"
-                   TextColor="#FFD700"
-                   FontSize="15"
-                   FontAttributes="Bold"/>
+            <!-- Filtros com fundo semitransparente -->
+            <Frame Grid.Row="0"
+                   BackgroundColor="#CC0A1A2E"
+                   CornerRadius="0"
+                   Padding="12"
+                   Margin="0">
+                <StackLayout Spacing="8">
+                    <Label Text="🔍 Filtros"
+                           TextColor="#FFD700"
+                           FontSize="15"
+                           FontAttributes="Bold"/>
 
-            <Entry x:Name="txtFiltroNome"
-                   Placeholder="Buscar por nome..."
-                   PlaceholderColor="#A8D5B5"
-                   TextColor="White"
-                   BackgroundColor="#0D6E3F"
-                   TextChanged="Filtro_Changed"/>
+                    <Entry x:Name="txtFiltroNome"
+                           Placeholder="Buscar por nome..."
+                           PlaceholderColor="#A8D5B5"
+                           TextColor="White"
+                           BackgroundColor="#440D6E3F"
+                           TextChanged="Filtro_Changed"/>
 
-            <StackLayout Orientation="Horizontal" Spacing="12">
-                <CheckBox x:Name="chkFiltroObtidas"
-                          Color="#FFD700"
-                          CheckedChanged="Filtro_Changed"/>
-                <Label Text="Apenas adquiridas ✅"
-                       TextColor="White"
-                       VerticalOptions="Center"/>
-            </StackLayout>
+                    <StackLayout Orientation="Horizontal" Spacing="12">
+                        <CheckBox x:Name="chkFiltroObtidas"
+                                  Color="#FFD700"
+                                  CheckedChanged="Filtro_Changed"/>
+                        <Label Text="Apenas adquiridas ✅"
+                               TextColor="White"
+                               VerticalOptions="Center"/>
+                    </StackLayout>
 
-            <StackLayout Orientation="Horizontal" Spacing="12">
-                <CheckBox x:Name="chkFiltroDesejadas"
-                          Color="#FFD700"
-                          CheckedChanged="Filtro_Changed"/>
-                <Label Text="Apenas desejadas ❤️"
-                       TextColor="White"
-                       VerticalOptions="Center"/>
-            </StackLayout>
+                    <StackLayout Orientation="Horizontal" Spacing="12">
+                        <CheckBox x:Name="chkFiltroDesejadas"
+                                  Color="#FFD700"
+                                  CheckedChanged="Filtro_Changed"/>
+                        <Label Text="Apenas desejadas ❤️"
+                               TextColor="White"
+                               VerticalOptions="Center"/>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
 
-        </StackLayout>
+            <!-- ListView -->
+            <ListView x:Name="lsvFigurinhas"
+                      Grid.Row="1"
+                      BackgroundColor="Transparent"
+                      SeparatorVisibility="None"
+                      RowHeight="120">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame BackgroundColor="#CC0A1A2E"
+                                   CornerRadius="12"
+                                   Margin="10,6"
+                                   Padding="8"
+                                   HasShadow="True">
+                                <StackLayout Orientation="Horizontal" Spacing="8">
 
-        <!-- LISTVIEW -->
-        <ListView x:Name="lsvFigurinhas"
-                  Grid.Row="1"
-                  BackgroundColor="Transparent"
-                  SeparatorVisibility="None"
-                  RowHeight="110">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Frame BackgroundColor="#0A5530"
-                               CornerRadius="12"
-                               Margin="10,6"
-                               Padding="8"
-                               HasShadow="True">
-                            <StackLayout Orientation="Horizontal" Spacing="8">
+                                    <Image Source="{Binding DirImagem}"
+                                           WidthRequest="70"
+                                           HeightRequest="90"
+                                           Aspect="AspectFill"/>
 
-                                <!-- Imagem -->
-                                <Image Source="{Binding DirImagem}"
-                                       WidthRequest="70"
-                                       HeightRequest="90"
-                                       Aspect="AspectFill"/>
+                                    <StackLayout HorizontalOptions="FillAndExpand"
+                                                 VerticalOptions="Center"
+                                                 Spacing="2">
+                                        <Label Text="{Binding NomeJogador}"
+                                               TextColor="White"
+                                               FontAttributes="Bold"
+                                               FontSize="15"/>
+                                        <Label Text="{Binding Selecao}"
+                                               TextColor="#A8D5B5"
+                                               FontSize="13"/>
+                                        <Label Text="{Binding TipoFigurinha}"
+                                               TextColor="#FFD700"
+                                               FontSize="12"/>
+                                    </StackLayout>
 
-                                <!-- Dados -->
-                                <StackLayout HorizontalOptions="FillAndExpand"
-                                             VerticalOptions="Center"
-                                             Spacing="2">
-                                    <Label Text="{Binding NomeJogador}"
-                                           TextColor="White"
-                                           FontAttributes="Bold"
-                                           FontSize="15"/>
-                                    <Label Text="{Binding Selecao}"
-                                           TextColor="#A8D5B5"
-                                           FontSize="13"/>
-                                    <Label Text="{Binding TipoFigurinha}"
-                                           TextColor="#FFD700"
-                                           FontSize="12"/>
+                                    <StackLayout VerticalOptions="Center"
+                                                 Spacing="4"
+                                                 Padding="4">
+                                        <Image Source="{Binding IconeCheck}"
+                                               WidthRequest="24" HeightRequest="24">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                                    Tapped="tapCheck_Tapped"
+                                                    CommandParameter="{Binding .}"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        <Image Source="{Binding IconeCoracao}"
+                                               WidthRequest="28" HeightRequest="28">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                                    Tapped="tapCoracao_Tapped"
+                                                    CommandParameter="{Binding .}"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        <Image Source="trash.png"
+                                               WidthRequest="28" HeightRequest="28">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                                    Tapped="tapDeletar_Tapped"
+                                                    CommandParameter="{Binding .}"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </StackLayout>
+
                                 </StackLayout>
-
-                                <!-- Ícones de ação -->
-                                <StackLayout VerticalOptions="Center"
-                                             Spacing="8"
-                                             Padding="4">
-
-                                    <!-- Check (Obtido) -->
-                                    <Image Source="{Binding IconeCheck}"
-                                           WidthRequest="28" HeightRequest="28">
-                                        <Image.GestureRecognizers>
-                                            <TapGestureRecognizer
-                                                Tapped="tapCheck_Tapped"
-                                                CommandParameter="{Binding .}"/>
-                                        </Image.GestureRecognizers>
-                                    </Image>
-
-                                    <!-- Coração (Desejado) -->
-                                    <Image Source="{Binding IconeCoracao}"
-                                           WidthRequest="28" HeightRequest="28">
-                                        <Image.GestureRecognizers>
-                                            <TapGestureRecognizer
-                                                Tapped="tapCoracao_Tapped"
-                                                CommandParameter="{Binding .}"/>
-                                        </Image.GestureRecognizers>
-                                    </Image>
-
-                                    <!-- Lixeira -->
-                                    <Image Source="trash.png"
-                                           WidthRequest="28"
-                                           HeightRequest="28">
-                                        <Image.GestureRecognizers>
-                                            <TapGestureRecognizer
-                                                Tapped="tapDeletar_Tapped"
-                                                CommandParameter="{Binding .}"/>
-                                        </Image.GestureRecognizers>
-                                    </Image>
-
-                                </StackLayout>
-                            </StackLayout>
-                        </Frame>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <!-- Botão Voltar -->
+            <Button Grid.Row="2"
+                    Text="← Voltar"
+                    Clicked="btnVoltar_Clicked"
+                    BackgroundColor="Transparent"
+                    TextColor="White"
+                    FontSize="15"
+                    Margin="0,4,0,8"/>
+        </Grid>
     </Grid>
 </ContentPage>

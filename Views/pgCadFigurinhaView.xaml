@@ -2,124 +2,130 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppAlbumFigurinhas.Views.pgCadFigurinhaView"
-             Title="Cadastrar Figurinha"
-             BackgroundColor="#0D6E3F">
-    <ScrollView>
-        <StackLayout Padding="20" Spacing="10">
+             Title="Cadastrar Figurinha">
+    <Grid>
+        <!-- Fundo -->
+        <Image Source="backgroundcadastro.png"
+               Aspect="AspectFill"
+               HorizontalOptions="Fill"
+               VerticalOptions="Fill"/>
 
-            <!-- Cabeçalho -->
-            <Label Text="🏆 Nova Figurinha"
-                   FontSize="22"
-                   FontAttributes="Bold"
-                   TextColor="#FFD700"
-                   HorizontalTextAlignment="Center"
-                   Margin="0,10,0,10"/>
+        <!-- Conteúdo -->
+        <ScrollView>
+            <StackLayout Padding="20" Spacing="10">
 
-            <!-- Imagem da Figurinha -->
-            <Frame BackgroundColor="#0A5530" CornerRadius="12" Padding="10">
-                <StackLayout>
-                    <Label Text="Foto da Figurinha *" TextColor="White" FontSize="14"/>
-                    <Image x:Name="imgFigurinha"
-                           HeightRequest="160"
-                           Aspect="AspectFit"
-                           BackgroundColor="#1A7A4A"
-                           Margin="0,6,0,6"/>
-                    <StackLayout Orientation="Horizontal" Spacing="8">
-                        <Button Text="📷 Selecionar"
-                                Clicked="btnAdicionarImagem_Clicked"
-                                BackgroundColor="#FFD700"
-                                TextColor="#0D6E3F"
-                                FontAttributes="Bold"
-                                CornerRadius="8"
-                                HorizontalOptions="FillAndExpand"/>
-                        <Button x:Name="btnRemoverImagem"
-                                Text="✖ Remover"
-                                Clicked="btnRemoverImagem_Clicked"
-                                BackgroundColor="#CC3333"
+                <Label Text="🏆 Nova Figurinha"
+                       FontSize="22"
+                       FontAttributes="Bold"
+                       TextColor="#FFD700"
+                       HorizontalTextAlignment="Center"
+                       Margin="0,10,0,10"/>
+
+                <!-- Imagem da Figurinha -->
+                <Frame BackgroundColor="#CC0A1A2E" CornerRadius="12" Padding="10">
+                    <StackLayout>
+                        <Label Text="Foto da Figurinha *" TextColor="White" FontSize="14"/>
+                        <Image x:Name="imgFigurinha"
+                               HeightRequest="160"
+                               Aspect="AspectFit"
+                               BackgroundColor="#441A3A5C"
+                               Margin="0,6,0,6"/>
+                        <StackLayout Orientation="Horizontal" Spacing="8">
+                            <Button Text="📷 Selecionar"
+                                    Clicked="btnAdicionarImagem_Clicked"
+                                    BackgroundColor="#FFD700"
+                                    TextColor="#0D1B2A"
+                                    FontAttributes="Bold"
+                                    CornerRadius="8"
+                                    HorizontalOptions="FillAndExpand"/>
+                            <Button x:Name="btnRemoverImagem"
+                                    Text="✖ Remover"
+                                    Clicked="btnRemoverImagem_Clicked"
+                                    BackgroundColor="#CC3333"
+                                    TextColor="White"
+                                    CornerRadius="8"
+                                    IsVisible="False"
+                                    HorizontalOptions="FillAndExpand"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <!-- Nome do Jogador -->
+                <Frame BackgroundColor="#CC0A1A2E" CornerRadius="12" Padding="10">
+                    <StackLayout>
+                        <Label Text="Nome do Jogador *" TextColor="White" FontSize="14"/>
+                        <Entry x:Name="txtNomeJogador"
+                               Placeholder="Ex: Vinicius Jr."
+                               PlaceholderColor="#A8D5B5"
+                               TextColor="White"
+                               BackgroundColor="Transparent"/>
+                    </StackLayout>
+                </Frame>
+
+                <!-- Seleção -->
+                <Frame BackgroundColor="#CC0A1A2E" CornerRadius="12" Padding="10">
+                    <StackLayout>
+                        <Label Text="Seleção *" TextColor="White" FontSize="14"/>
+                        <Entry x:Name="txtSelecao"
+                               Placeholder="Ex: Brasil"
+                               PlaceholderColor="#A8D5B5"
+                               TextColor="White"
+                               BackgroundColor="Transparent"/>
+                    </StackLayout>
+                </Frame>
+
+                <!-- Tipo -->
+                <Frame BackgroundColor="#CC0A1A2E" CornerRadius="12" Padding="10">
+                    <StackLayout>
+                        <Label Text="Tipo de Figurinha *" TextColor="White" FontSize="14"/>
+                        <Picker x:Name="pkrTipo"
                                 TextColor="White"
-                                CornerRadius="8"
-                                IsVisible="False"
-                                HorizontalOptions="FillAndExpand"/>
+                                BackgroundColor="Transparent">
+                            <Picker.Items>
+                                <x:String>Comum</x:String>
+                                <x:String>Especial</x:String>
+                            </Picker.Items>
+                        </Picker>
                     </StackLayout>
-                </StackLayout>
-            </Frame>
+                </Frame>
 
-            <!-- Nome do Jogador -->
-            <Frame BackgroundColor="#0A5530" CornerRadius="12" Padding="10">
-                <StackLayout>
-                    <Label Text="Nome do Jogador *" TextColor="White" FontSize="14"/>
-                    <Entry x:Name="txtNomeJogador"
-                           Placeholder="Ex: Vinicius Jr."
-                           PlaceholderColor="#A8D5B5"
-                           TextColor="White"
-                           BackgroundColor="Transparent"/>
-                </StackLayout>
-            </Frame>
-
-            <!-- Seleção -->
-            <Frame BackgroundColor="#0A5530" CornerRadius="12" Padding="10">
-                <StackLayout>
-                    <Label Text="Seleção *" TextColor="White" FontSize="14"/>
-                    <Entry x:Name="txtSelecao"
-                           Placeholder="Ex: Brasil"
-                           PlaceholderColor="#A8D5B5"
-                           TextColor="White"
-                           BackgroundColor="Transparent"/>
-                </StackLayout>
-            </Frame>
-
-            <!-- Tipo de Figurinha -->
-            <Frame BackgroundColor="#0A5530" CornerRadius="12" Padding="10">
-                <StackLayout>
-                    <Label Text="Tipo de Figurinha *" TextColor="White" FontSize="14"/>
-                    <Picker x:Name="pkrTipo"
-                            TextColor="White"
-                            BackgroundColor="Transparent">
-                        <Picker.Items>
-                            <x:String>Comum</x:String>
-                            <x:String>Especial</x:String>
-                        </Picker.Items>
-                    </Picker>
-                </StackLayout>
-            </Frame>
-
-            <!-- Status: Obtido e Desejado -->
-            <Frame BackgroundColor="#0A5530" CornerRadius="12" Padding="10">
-                <StackLayout Spacing="8">
-                    <Label Text="Status *" TextColor="White" FontSize="14"/>
-                    <StackLayout Orientation="Horizontal" Spacing="16">
-                        <CheckBox x:Name="chkObtido" Color="#FFD700"/>
-                        <Label Text="Obtida (já tenho)"
-                               TextColor="White"
-                               VerticalOptions="Center"/>
+                <!-- Status -->
+                <Frame BackgroundColor="#CC0A1A2E" CornerRadius="12" Padding="10">
+                    <StackLayout Spacing="8">
+                        <Label Text="Status *" TextColor="White" FontSize="14"/>
+                        <StackLayout Orientation="Horizontal" Spacing="16">
+                            <CheckBox x:Name="chkObtido" Color="#FFD700"/>
+                            <Label Text="Obtida (já tenho)"
+                                   TextColor="White"
+                                   VerticalOptions="Center"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Spacing="16">
+                            <CheckBox x:Name="chkDesejado" Color="#FFD700"/>
+                            <Label Text="Desejada (quero ter)"
+                                   TextColor="White"
+                                   VerticalOptions="Center"/>
+                        </StackLayout>
                     </StackLayout>
-                    <StackLayout Orientation="Horizontal" Spacing="16">
-                        <CheckBox x:Name="chkDesejado" Color="#FFD700"/>
-                        <Label Text="Desejada (quero ter)"
-                               TextColor="White"
-                               VerticalOptions="Center"/>
-                    </StackLayout>
-                </StackLayout>
-            </Frame>
+                </Frame>
 
-            <!-- Botões -->
-            <Button Text="💾 Salvar Figurinha"
-                    Clicked="btnSalvar_Clicked"
-                    BackgroundColor="#FFD700"
-                    TextColor="#0D6E3F"
-                    FontAttributes="Bold"
-                    FontSize="17"
-                    CornerRadius="12"
-                    HeightRequest="55"
-                    Margin="0,10,0,0"/>
+                <Button Text="💾 Salvar Figurinha"
+                        Clicked="btnSalvar_Clicked"
+                        BackgroundColor="#FFD700"
+                        TextColor="#0D1B2A"
+                        FontAttributes="Bold"
+                        FontSize="17"
+                        CornerRadius="12"
+                        HeightRequest="55"
+                        Margin="0,10,0,0"/>
 
-            <Button Text="← Voltar"
-                    Clicked="btnVoltar_Clicked"
-                    BackgroundColor="Transparent"
-                    TextColor="#A8D5B5"
-                    FontSize="15"
-                    Margin="0,0,0,20"/>
+                <Button Text="← Voltar"
+                        Clicked="btnVoltar_Clicked"
+                        BackgroundColor="Transparent"
+                        TextColor="White"
+                        FontSize="15"
+                        Margin="0,0,0,20"/>
 
-        </StackLayout>
-    </ScrollView>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
 </ContentPage>

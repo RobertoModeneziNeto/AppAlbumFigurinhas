@@ -80,4 +80,9 @@ public partial class pgListaFigurinhasView : ContentPage
             }
         }
     }
+
+    private void btnVoltar_Clicked(object sender, EventArgs e)
+    {
+        Application.Current.MainPage.Navigation.PopAsync();
+    }
 }
