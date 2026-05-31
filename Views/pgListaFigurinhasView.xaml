@@ -57,7 +57,7 @@
                       Grid.Row="1"
                       BackgroundColor="Transparent"
                       SeparatorVisibility="None"
-                      RowHeight="120">
+                      RowHeight="140">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -104,6 +104,15 @@
                                             <Image.GestureRecognizers>
                                                 <TapGestureRecognizer
                                                     Tapped="tapCoracao_Tapped"
+                                                    CommandParameter="{Binding .}"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
+
+                                        <Image Source="edit.png"
+                                               WidthRequest="24" HeightRequest="24">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                                    Tapped="tapEditar_Tapped"
                                                     CommandParameter="{Binding .}"/>
                                             </Image.GestureRecognizers>
                                         </Image>

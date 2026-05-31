@@ -106,8 +106,9 @@ public partial class pgAbrirPacoteView : ContentPage
 
         // Carrega a imagem — tenta encontrar pelo nome do jogador
         // Carrega a imagem pelo caminho real no disco
+        // Em MostrarFigurinhaRevelada()
         string dirImagem = JogadoresDataService.BuscarCaminhoImagem(
-            _sorteada.Nome, _sorteada.Selecao);
+            _sorteada.Nome, _sorteada.Selecao, _sorteada.Tipo);
 
         // Se não encontrou pela busca, tenta pegar do registro existente no banco
         if (string.IsNullOrEmpty(dirImagem) && _figurinhaExistente != null
@@ -165,7 +166,7 @@ public partial class pgAbrirPacoteView : ContentPage
     {
         // Busca o caminho real da imagem no disco
         string dirImagemReal = JogadoresDataService.BuscarCaminhoImagem(
-            _sorteada.Nome, _sorteada.Selecao);
+            _sorteada.Nome, _sorteada.Selecao, _sorteada.Tipo);
 
         var nova = new Figurinha
         {
