@@ -85,4 +85,13 @@ public partial class pgListaFigurinhasView : ContentPage
     {
         Application.Current.MainPage.Navigation.PopAsync();
     }
+
+    private async void tapEditar_Tapped(object sender, TappedEventArgs e)
+    {
+        if (e.Parameter is Figurinha item)
+        {
+            await Application.Current.MainPage.Navigation
+                .PushAsync(new pgEditarFigurinhaView(item));
+        }
+    }
 }

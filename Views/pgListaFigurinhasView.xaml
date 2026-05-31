@@ -57,7 +57,7 @@
                       Grid.Row="1"
                       BackgroundColor="Transparent"
                       SeparatorVisibility="None"
-                      RowHeight="140">
+                      RowHeight="150">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

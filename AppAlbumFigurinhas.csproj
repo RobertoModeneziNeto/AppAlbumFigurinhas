@@ -73,6 +73,9 @@
 	  <MauiXaml Update="Views\pgCadFigurinhaView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\pgEditarFigurinhaView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\pgListaFigurinhasView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
