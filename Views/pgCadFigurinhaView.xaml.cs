@@ -40,7 +40,6 @@ public partial class pgCadFigurinhaView : ContentPage
         string selecao = txtSelecao.Text;
         string tipo = pkrTipo.SelectedItem?.ToString();
 
-        // Validação dos campos obrigatórios
         if (string.IsNullOrEmpty(nome) ||
             string.IsNullOrEmpty(selecao) ||
             string.IsNullOrEmpty(tipo) ||
@@ -61,7 +60,7 @@ public partial class pgCadFigurinhaView : ContentPage
         if (_controller.Insert(figurinha))
         {
             DisplayAlert("Sucesso", "Figurinha cadastrada com sucesso! ", "OK");
-            // Limpar campos
+        
             txtNomeJogador.Text = "";
             txtSelecao.Text = "";
             pkrTipo.SelectedIndex = -1;

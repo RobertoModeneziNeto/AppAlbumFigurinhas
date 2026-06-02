@@ -425,7 +425,7 @@ namespace AppAlbumFigurinhas.Services
                 ("Felix Nmecha", "Germany", "Comum"),
                 ("Florian Wirtz", "Germany", "Comum"),
                 ("Jamal Musiala", "Germany", "Comum"),
-                ("Jamal Musiala", "Germany", "Comum"),
+                ("Jamal Musiala", "Germany", "Especial"),
                 ("Jonathan Tah", "Germany", "Comum"),
                 ("Joshua Kimmich", "Germany", "Especial"),
                 ("Joshua Kimmich", "Germany", "Especial"),

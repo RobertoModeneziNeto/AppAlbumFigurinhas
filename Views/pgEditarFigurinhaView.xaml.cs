@@ -10,7 +10,6 @@ public partial class pgEditarFigurinhaView : ContentPage
     Figurinha _figurinha;
     string _imgSelecionada = "";
 
-    // Recebe a figurinha a ser editada
     public pgEditarFigurinhaView(Figurinha figurinha)
     {
         InitializeComponent();
@@ -19,7 +18,7 @@ public partial class pgEditarFigurinhaView : ContentPage
         PreencherCampos();
     }
 
-    // Preenche os campos com os dados atuais da figurinha
+    
     void PreencherCampos()
     {
         txtNomeJogador.Text = _figurinha.NomeJogador;
@@ -75,7 +74,6 @@ public partial class pgEditarFigurinhaView : ContentPage
         _figurinha.Obtido = chkObtido.IsChecked;
         _figurinha.Desejado = chkDesejado.IsChecked;
 
-        // Só atualiza a imagem se o usuário alterou
         if (!string.IsNullOrEmpty(_imgSelecionada)
             && _imgSelecionada != _figurinha.DirImagem)
         {

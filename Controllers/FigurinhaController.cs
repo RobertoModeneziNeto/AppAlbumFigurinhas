@@ -41,7 +41,6 @@ namespace AppAlbumFigurinhas.Controllers
             return _connection.Table<Figurinha>().ToList();
         }
 
-        // Filtro combinado: nome + obtido + desejado
         public List<Figurinha> GetFiltrado(string nome, bool? obtido, bool? desejado)
         {
             var query = _connection.Table<Figurinha>();

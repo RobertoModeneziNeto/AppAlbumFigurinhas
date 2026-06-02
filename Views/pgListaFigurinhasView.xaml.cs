@@ -27,7 +27,7 @@ public partial class pgListaFigurinhasView : ContentPage
 
         var lista = _controller.GetFiltrado(nome, obtido, desejado);
 
-        // Adiciona os ícones corretos conforme status
+       
         foreach (var f in lista)
         {
             

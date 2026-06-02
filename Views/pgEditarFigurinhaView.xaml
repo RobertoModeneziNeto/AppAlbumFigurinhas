@@ -4,13 +4,12 @@
              x:Class="AppAlbumFigurinhas.Views.pgEditarFigurinhaView"
              Title="Editar Figurinha">
     <Grid>
-        <!-- Fundo -->
+       
         <Image Source="backgroundCadastro.png"
                Aspect="AspectFill"
                HorizontalOptions="Fill"
                VerticalOptions="Fill"/>
 
-        <!-- Conteúdo -->
         <ScrollView>
             <StackLayout Padding="20" Spacing="10">
 
@@ -21,7 +20,6 @@
                        HorizontalTextAlignment="Center"
                        Margin="0,10,0,10"/>
 
-                <!-- Imagem da Figurinha -->
                 <Frame BackgroundColor="#CC0A1A2E" CornerRadius="12" Padding="10">
                     <StackLayout>
                         <Label Text="Foto da Figurinha" TextColor="White" FontSize="14"/>
@@ -50,7 +48,6 @@
                     </StackLayout>
                 </Frame>
 
-                <!-- Nome do Jogador -->
                 <Frame BackgroundColor="#CC0A1A2E" CornerRadius="12" Padding="10">
                     <StackLayout>
                         <Label Text="Nome do Jogador *" TextColor="White" FontSize="14"/>
@@ -62,7 +59,7 @@
                     </StackLayout>
                 </Frame>
 
-                <!-- Seleção -->
+               
                 <Frame BackgroundColor="#CC0A1A2E" CornerRadius="12" Padding="10">
                     <StackLayout>
                         <Label Text="Seleção *" TextColor="White" FontSize="14"/>
@@ -74,7 +71,7 @@
                     </StackLayout>
                 </Frame>
 
-                <!-- Tipo -->
+                
                 <Frame BackgroundColor="#CC0A1A2E" CornerRadius="12" Padding="10">
                     <StackLayout>
                         <Label Text="Tipo de Figurinha *" TextColor="White" FontSize="14"/>
@@ -89,7 +86,6 @@
                     </StackLayout>
                 </Frame>
 
-                <!-- Status -->
                 <Frame BackgroundColor="#CC0A1A2E" CornerRadius="12" Padding="10">
                     <StackLayout Spacing="8">
                         <Label Text="Status" TextColor="White" FontSize="14"/>
@@ -108,7 +104,7 @@
                     </StackLayout>
                 </Frame>
 
-                <!-- Botões -->
+              
                 <Button Text="💾 Salvar Alterações"
                         Clicked="btnSalvar_Clicked"
                         BackgroundColor="#FFD700"

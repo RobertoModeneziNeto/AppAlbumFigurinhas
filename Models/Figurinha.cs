@@ -13,7 +13,6 @@ namespace AppAlbumFigurinhas.Models
         public bool Desejado { get; set; }
         public string DirImagem { get; set; }
 
-        // Usadas apenas para exibição na tela (não salvas no banco)
         [Ignore]
         public string IconeCheck { get; set; }
         [Ignore]

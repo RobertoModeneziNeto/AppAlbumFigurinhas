@@ -4,13 +4,13 @@
              x:Class="AppAlbumFigurinhas.MainPage">
 
     <Grid>
-        <!-- Camada 1: Imagem de fundo -->
+     
         <Image Source="backgroundinicio.png"
                Aspect="AspectFill"
                HorizontalOptions="Fill"
                VerticalOptions="Fill"/>
 
-        <!-- Camada 2: Conteúdo -->
+  
         <Grid RowDefinitions="*, Auto">
 
             <ScrollView Grid.Row="0">
@@ -29,7 +29,6 @@
                            HorizontalTextAlignment="Center"
                            Margin="0,0,0,40"/>
 
-                    <!-- Botão Cadastro -->
                     <Frame BackgroundColor="#FFD700"
                            CornerRadius="16"
                            Padding="0"
@@ -44,7 +43,6 @@
                                 HeightRequest="60"/>
                     </Frame>
 
-                    <!-- Botão Abrir Pacote -->
                     <Frame BackgroundColor="#C8102E"
                            CornerRadius="16"
                            Padding="0"
@@ -59,7 +57,7 @@
                                 HeightRequest="60"/>
                     </Frame>
 
-                    <!-- Botão Lista -->
+       
                     <Frame BackgroundColor="White"
                            CornerRadius="16"
                            Padding="0"
@@ -77,7 +75,6 @@
                 </StackLayout>
             </ScrollView>
 
-            <!-- Rodapé com fundo semitransparente -->
             <StackLayout Grid.Row="1"
                          Padding="10">
                 <Frame BackgroundColor="#80000000"
